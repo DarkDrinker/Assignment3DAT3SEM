@@ -51,8 +51,7 @@ public class UnicornDAO
 
     public List<Unicorn> findAll() {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Unicorn> query = em.createQuery("SELECT * FROM public.Unicorn", Unicorn.class);
-        em.close();
+        TypedQuery<Unicorn> query = em.createQuery("SELECT u FROM Unicorn u", Unicorn.class);
         return query.getResultList();
     }
 
