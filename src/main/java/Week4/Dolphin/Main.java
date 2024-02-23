@@ -4,10 +4,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello Dolphin!");
+        DolphinDAO dolphinDAO = new DolphinDAO();
 
         EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig("dolphin");
         try(EntityManager em = emf.createEntityManager())
@@ -39,6 +41,20 @@ public class Main {
                 em.persist(p2);
                 em.persist(p3);
             em.getTransaction().commit();
+
+
+            for (Object fees :
+                    dolphinDAO.getallPayments(p1)) {
+                System.out.println(fees);
+            }
+
+            for (Object note :
+                    dolphinDAO.getAllNotesFromPerson(p1)) {
+                System.out.println(note.toString());
+            }
+            dolphinDAO.GetEverythingOnThisPerson(p1);
+
+            dolphinDAO.close();
         }
     }
 }

@@ -66,6 +66,7 @@ public class PackageDAO {
 
     public List<Package> readAllPackages() {
         TypedQuery<Package> query = entityManager.createQuery("SELECT p FROM Package p", Package.class);
+        //something is wrong
         return query.getResultList();
     }
 

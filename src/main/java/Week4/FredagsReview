@@ -1,0 +1,45 @@
+- Be able to explain the purpose of JPQL and how it differs from SQL.
+- What is the difference between TypedQuery and Query and when to use them.
+- Be able to demonstrate and explain how to use NamedQueries.
+- Be able to demonstrate native queries and explain the purpose
+
+    Object orienteret query, så vi bruger samme principper nå vi skriver JPQL som vi skriver JAVA.
+    Vi arbejder med at manipulere java classes og objects istedet for db, så vi kan bruge entitets klasser og andet gøgl
+
+    SQL har et lavere abstraktions niveau end JPQL, da den arbejder direkte med db. mens vi arbejder med classes og enitet
+    Syntax er selvfølgelig den samme i JPQL da der kun er et, men SQL finder du af mange forskellige versioner af, til hvert
+    db program.
+
+
+
+
+    ex på typedquery
+    TypedQuery<Driver> query = entityManager.createQuery("SELECT d FROM Driver d WHERE d.surname = :surname", Driver.class);
+    query.setParameter("surname", "Smith");
+    List<Driver> drivers = query.getResultList();
+
+    resultat -> variabel, intet uhensigtmæssigt
+
+
+
+
+
+    Query query = entityManager.createNativeQuery("SELECT * FROM driver WHERE surname = :surname", Driver.class);
+    query.setParameter("surname", "Smith");
+    List<Driver> drivers = query.getResultList();
+
+    Her er plads til mere flexibilitet, dog bliver vi nød til at caste til en type hvis vi arbejder med specifike ting
+    List<Driver> drivers = (List<Driver>) query.getResultList();
+
+
+
+
+
+    på samme måde som vi bruger tidligere (Query query = entityManager.createNativeQuery("SELECT * FROM driver WHERE surname = :surname", Driver.class);
+                                               query.setParameter("surname", "Smith"); )
+    Bruger vi namedqueries, vi kan bruge det til at indsætte variabler vi passere ind gennnem metoder eller andet
+
+
+    NativeQueries bruger vi også i tidligere eksempel, Vi kan bruge det til at bruge orignale sql funktioner, der ikke er mulige med eller gennem JPQL eller mere komplekse ting.
+    som joins, db specfikkike funktioner
+    og de sidstnævnte kan have performance fordel nå jo mere kompleks det bliver.

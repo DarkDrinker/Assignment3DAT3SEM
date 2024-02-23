@@ -1,6 +1,8 @@
-package Week4.ExcersiseInClass;
+package Week4.Recycling.config;
 
-import Week3.ExcersiseInClass.Employee;
+import Week4.ExcersiseInClass.Teacher;
+import Week4.Recycling.model.Driver;
+import Week4.Recycling.model.WasteTruck;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
 import org.hibernate.SessionFactory;
@@ -55,8 +57,8 @@ public class HibernateConfig {
     }
 
     private static void getAnnotationConfiguration(Configuration configuration) {
-            configuration.addAnnotatedClass(Teacher.class);
-            configuration.addAnnotatedClass(Course.class);
+            configuration.addAnnotatedClass(Driver.class);
+            configuration.addAnnotatedClass(WasteTruck.class);
         // add annotated classes
         // configuration.addAnnotatedClass(<YOUR ENTITY>.class);
     }
