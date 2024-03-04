@@ -21,9 +21,14 @@ Which HTTP status code does this refer to?
 
 I asked the store for a specific product, but they redirected me to another store.
 Which HTTP status code does this refer to?
- =
+ = 302
 
 
-I successfully placed an order for a custom-made cake at the bakery, and they informed me that it would be ready soon. Which HTTP status code does this refer to?
+I successfully placed an order for a custom-made cake at the bakery, and they informed me that it would be ready soon.
+Which HTTP status code does this refer to?
+ = 202
 
-I went to a store to buy a particular brand of sneakers, but they informed me that they've moved to a new location. Which HTTP status code does this refer to?
+
+I went to a store to buy a particular brand of sneakers, but they informed me that they've moved to a new location.
+Which HTTP status code does this refer to?
+ = 301
