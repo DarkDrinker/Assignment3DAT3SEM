@@ -1,0 +1,18 @@
+- HTTP Methods Understanding: Explain the fundamental HTTP methods (GET, POST, PUT, DELETE) and their primary purposes in web development,
+including how they map to CRUD (Create, Read, Update, Delete) operations.
+Get -> request data from a rescourse(Read in CRUD)
+POST -> Submit data(create in CRUD)
+PUT -> update or replace(update in CRUD)
+DELETE -> used to remove items(delete in CRUD)
+
+- HTTP Status Codes Mastery: Familiarize yourself with common HTTP status codes (e.g., 200 OK, 404 Not Found, 500 Internal Server Error) and their meanings.
+Understand when and how to use these status codes in HTTP responses.
+200 - OK, og serveren har retuneret det du har bedt om
+400 - BAD REQUEST, kan ikke udf're opgaven p[grund af en fejl fra klienten, dårlig syntax.
+
+
+- Handling HTTP Methods: Learn how to define and handle various HTTP methods in web applications, including routing requests to specific handlers based on the method used.
+example in main
+
+-Effective Status Code Usage: Gain proficiency in selecting and returning appropriate HTTP status codes in your web application based on the success or failure of the request, ensuring clear and meaningful communication between the client and server.
+no time?
