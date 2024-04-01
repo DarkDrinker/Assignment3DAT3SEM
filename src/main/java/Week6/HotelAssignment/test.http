@@ -1,0 +1,16 @@
+POST http://localhost:7007/api/hotels/hotel
+
+{
+    "name": "Charmander's Hjem",
+    "address": "Ildvej 7",
+    "rooms": [
+        {
+            "number": 1,
+            "price": 5000
+        },
+        {
+            "number": 2,
+            "price": 3000
+        }
+    ]
+}
