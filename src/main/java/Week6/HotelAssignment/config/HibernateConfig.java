@@ -1,7 +1,8 @@
 package Week6.HotelAssignment.config;
 
-import HotelAssignment.model.Hotel;
-import HotelAssignment.model.Room;
+
+import Week6.HotelAssignment.model.Hotel;
+import Week6.HotelAssignment.model.Room;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
 import org.hibernate.SessionFactory;

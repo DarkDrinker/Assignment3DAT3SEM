@@ -55,7 +55,7 @@ public class Main {
     }
 
     private static void getDogById(Context ctx) {
-        int id = ctx.pathParam("id", Integer.class).get();
+        int id = Integer.parseInt(ctx.pathParam("id"));
         DogDTO dog = dogs.get(id);
         if (dog != null) {
             ctx.json(dog);
@@ -72,7 +72,7 @@ public class Main {
     }
 
     private static void updateDog(Context ctx) {
-        int id = (String) ctx.pathParam("id", Integer.class).get();
+        int id = Integer.parseInt(ctx.pathParam("id"));
         DogDTO existingDog = dogs.get(id);
         if (existingDog != null) {
             DogDTO updatedDog = ctx.bodyAsClass(DogDTO.class);
@@ -85,7 +85,7 @@ public class Main {
     }
 
     private static void deleteDog(Context ctx) {
-        int id = ctx.pathParam("id", Integer.class).get();
+        int id = Integer.parseInt(ctx.pathParam("id"));
         DogDTO removedDog = dogs.remove(id);
         if (removedDog != null) {
             ctx.json(removedDog);

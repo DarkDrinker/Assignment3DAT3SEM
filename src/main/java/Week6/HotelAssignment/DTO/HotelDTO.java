@@ -1,6 +1,6 @@
 package Week6.HotelAssignment.DTO;
 
-import HotelAssignment.model.Room;
+import Week6.HotelAssignment.model.Room;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

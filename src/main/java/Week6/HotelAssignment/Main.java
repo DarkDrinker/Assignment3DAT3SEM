@@ -1,12 +1,12 @@
 package Week6.HotelAssignment;
 
 
-import HotelAssignment.DAO.HotelDAO;
-import HotelAssignment.DAO.RoomDAO;
-import HotelAssignment.config.ApplicationConfig;
-import HotelAssignment.config.HibernateConfig;
-import HotelAssignment.config.Routes;
-import HotelAssignment.model.*;
+import Week6.HotelAssignment.DAO.HotelDAO;
+import Week6.HotelAssignment.DAO.RoomDAO;
+import Week6.HotelAssignment.config.ApplicationConfig;
+import Week6.HotelAssignment.config.HibernateConfig;
+import Week6.HotelAssignment.config.Routes;
+import Week6.HotelAssignment.model.*;
 import jakarta.persistence.EntityManagerFactory;
 
 public class Main {

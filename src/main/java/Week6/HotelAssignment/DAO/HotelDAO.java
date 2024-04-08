@@ -1,6 +1,6 @@
 package Week6.HotelAssignment.DAO;
 
-import HotelAssignment.model.Hotel;
+import Week6.HotelAssignment.model.Hotel;
 import jakarta.persistence.EntityManagerFactory;
 
 public class HotelDAO extends DAO<Hotel, Integer>{

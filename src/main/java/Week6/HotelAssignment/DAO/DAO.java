@@ -1,6 +1,6 @@
 package Week6.HotelAssignment.DAO;
 
-import HotelAssignment.config.HibernateConfig;
+import Week6.HotelAssignment.config.HibernateConfig;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;

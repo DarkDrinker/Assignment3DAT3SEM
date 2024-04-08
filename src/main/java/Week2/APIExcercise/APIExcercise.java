@@ -18,7 +18,6 @@ import java.util.List;
 
 public class APIExcercise {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
     static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public static void main(String[] args) {

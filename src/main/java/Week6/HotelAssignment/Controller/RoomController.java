@@ -1,10 +1,11 @@
 package Week6.HotelAssignment.Controller;
 
-import HotelAssignment.DAO.HotelDAO;
-import HotelAssignment.DAO.RoomDAO;
-import HotelAssignment.DTO.RoomDTO;
-import HotelAssignment.model.Hotel;
-import HotelAssignment.model.Room;
+
+import Week6.HotelAssignment.DAO.HotelDAO;
+import Week6.HotelAssignment.DAO.RoomDAO;
+import Week6.HotelAssignment.DTO.RoomDTO;
+import Week6.HotelAssignment.model.Hotel;
+import Week6.HotelAssignment.model.Room;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
