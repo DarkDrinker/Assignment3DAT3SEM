@@ -21,7 +21,7 @@ public class HibernateConfig {
 
             Properties props = new Properties();
 
-            props.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/postgres?currentSchema=public");
+            props.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/GLSDB?currentSchema=public");
             props.put("hibernate.connection.username", "postgres");
             props.put("hibernate.connection.password", "postgres");
             props.put("hibernate.show_sql", "false"); // show sql in console

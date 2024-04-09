@@ -1,5 +1,7 @@
-package Week3.Excersise7GLS;
+package Week4.GLSPart2;
 
+import Week3.Excersise7GLS.Package;
+import Week3.Excersise7GLS.PackageDAO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -10,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     public class PackageDAOTest {
         private static EntityManager entityManager;
-        private static PackageDAO packageDAO;
+        private static Week3.Excersise7GLS.PackageDAO packageDAO;
 
         @BeforeAll
         public static void setUp() {
@@ -26,17 +28,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
         @Test
         public void testPersistPackage() {
-            Package pkg = new Package();
+            Week3.Excersise7GLS.Package pkg = new Week3.Excersise7GLS.Package();
             pkg.setTrackingNumber("ABC123");
             pkg.setSenderName("Sender");
             pkg.setReceiverName("Receiver");
-            pkg.setDeliveryStatus(Package.DeliveryStatus.PENDING);
+            pkg.setDeliveryStatus(Week3.Excersise7GLS.Package.DeliveryStatus.PENDING);
 
             packageDAO.createPackage(pkg);
 
-            Package retrievedPackage = entityManager.find(Package.class, pkg.getId());
-            Assertions.assertNotNull(retrievedPackage);
-            Assertions.assertEquals("ABC123", retrievedPackage.getTrackingNumber());
+            Week3.Excersise7GLS.Package retrievedPackage = entityManager.find(Package.class, pkg.getId());
+            assertNotNull(retrievedPackage);
+            assertEquals("ABC123", retrievedPackage.getTrackingNumber());
         }
 
     }

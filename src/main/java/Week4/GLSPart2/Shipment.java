@@ -1,11 +1,8 @@
-package Week4.GLSPart2;
+package Week4.GLSPART2;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.junit.jupiter.api.BeforeAll;
-
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -21,7 +18,7 @@ public class Shipment {
     @ManyToOne
     private Package aPackage;
     @ManyToOne
-    private Location sourcelocation;
+    private  Location sourcelocation;
     @ManyToOne
     private Location destinationlocation;
 

@@ -1,5 +1,6 @@
 package Week6.HotelAssignment.DTO;
 
+import Week6.HotelAssignment.model.Hotel;
 import Week6.HotelAssignment.model.Room;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,5 +18,13 @@ public class HotelDTO {
     private String name;
     private String address;
     private List<Room> rooms;
+
+
+    public HotelDTO(Hotel hotel) {
+        setId(hotel.getId());
+        setName(hotel.getName());
+        setAddress(hotel.getAddress());
+        setRooms(hotel.getRooms());
+    }
 }
 

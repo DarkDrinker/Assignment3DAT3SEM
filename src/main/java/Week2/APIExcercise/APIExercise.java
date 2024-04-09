@@ -16,19 +16,19 @@ import java.util.Date;
 import java.util.List;
 
 
-public class APIExcercise {
+public class APIExercise {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public static void main(String[] args) {
-        APIExcercise ap = new APIExcercise();
+        APIExercise ap = new APIExercise();
         List<MovieDTO> movies = new ArrayList<>();
-        movies.add(ap.getinfo("tt11198330"));
+        movies.add(ap.getinfo("tt0468569"));
         movies.add(ap.getinfo("tt0068646"));
         movies.add(ap.getinfo("tt0468569"));
         movies.add(ap.getinfo("tt0050083"));
         movies.add(ap.getinfo("tt0108052"));
-        movies.add(ap.getinfo("tt10048342"));
+        movies.add(ap.getinfo("tt15239678"));
         movies.add(ap.getinfo("tt0111161"));
         movies.add(ap.getinfo("tt0060196"));
         movies.add(ap.getinfo("tt0137523"));
@@ -38,9 +38,9 @@ public class APIExcercise {
         movies.add(ap.getinfo("tt0071562"));
         movies.add(ap.getinfo("tt0110912"));
 
-        MovieController mc = new APIExcercise().new MovieController();
+        MovieController mc = new APIExercise().new MovieController();
 
-        List<MovieDTO> moviesAboveRating = mc.getByRatingOrAbove(8.5, movies);
+        List<MovieDTO> moviesAboveRating = mc.getByRatingOrAbove(9.0, movies);
 
         List<MovieDTO> moviesSortedByReleaseDate = mc.getSortedByReleaseDate(movies);
 
@@ -120,9 +120,6 @@ public class APIExcercise {
     @ToString
     public class ResultDTO {
         public MovieDTO movie_results[];
-        public String person_results[];
-        public String tv_results[];
-        public String tv_episode_results[];
     }
 
 }

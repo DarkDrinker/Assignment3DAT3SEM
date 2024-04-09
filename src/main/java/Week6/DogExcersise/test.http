@@ -1,0 +1,25 @@
+GET http://localhost:7007/api/dogs
+###
+GET http://localhost:7007/api/dogs/dog/1
+###
+POST http://localhost:7007/api/dogs/dog
+
+{
+  "name": "Rex",
+  "breed": "Golden Retriever",
+  "gender": "Female",
+  "age": 3
+}
+
+###
+PUT http://localhost:7007/api/dogs/dog/4
+
+{
+  "name": "Han Solo",
+  "breed": "Golden Retriever",
+  "gender": "Male",
+  "age": 4
+}
+
+###
+DELETE http://localhost:7007/api/dogs/dog/4

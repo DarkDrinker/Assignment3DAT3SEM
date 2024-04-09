@@ -2,7 +2,9 @@ package Week6.HotelAssignment.config;
 
 
 import Week6.HotelAssignment.model.Hotel;
+import Week6.HotelAssignment.model.Role;
 import Week6.HotelAssignment.model.Room;
+import Week6.HotelAssignment.model.User;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
 import org.hibernate.SessionFactory;
@@ -26,7 +28,7 @@ public class HibernateConfig {
             props.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/hoteldb?currentSchema=public");
             props.put("hibernate.connection.username", "postgres");
             props.put("hibernate.connection.password", "postgres");
-            props.put("hibernate.show_sql", "false"); // show sql in console
+            props.put("hibernate.show_sql", "true"); // show sql in console
             props.put("hibernate.format_sql", "true"); // format sql in console
             props.put("hibernate.use_sql_comments", "true"); // show sql comments in console
 
@@ -59,12 +61,40 @@ public class HibernateConfig {
     private static void getAnnotationConfiguration(Configuration configuration) {
             configuration.addAnnotatedClass(Hotel.class);
             configuration.addAnnotatedClass(Room.class);
-        // add annotated classes
-        // configuration.addAnnotatedClass(<YOUR ENTITY>.class);
+            configuration.addAnnotatedClass(User.class);
+            configuration.addAnnotatedClass(Role.class);
     }
 
-    public static EntityManagerFactory getEntityManagerFactoryConfig() {
-        if (entityManagerFactory == null) entityManagerFactory = buildEntityFactoryConfig();
+    public static EntityManagerFactory getEntityManagerFactoryConfig(Boolean isTesting){
+        if(isTesting){
+            return getEntityManagerFactoryConfigForTesting();
+        } else {
+            return buildEntityFactoryConfig();
+        }
+    }
+
+    public static EntityManagerFactory getEntityManagerFactoryConfigForTesting() {
+        if (entityManagerFactory == null) entityManagerFactory = setupHibernateConfigurationForTesting();
         return entityManagerFactory;
+
+    }
+
+    private static EntityManagerFactory setupHibernateConfigurationForTesting() {
+        try {
+            Configuration configuration = new Configuration();
+            Properties props = new Properties();
+            props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+            props.put("hibernate.connection.driver_class", "org.testcontainers.jdbc.ContainerDatabaseDriver");
+            props.put("hibernate.connection.url", "jdbc:tc:postgresql:15.3-alpine3.18:///test-db");
+            props.put("hibernate.connection.username", "postgres");
+            props.put("hibernate.connection.password", "postgres");
+            props.put("hibernate.archive.autodetection", "class");
+            props.put("hibernate.show_sql", "true");
+            props.put("hibernate.hbm2ddl.auto", "create-drop");
+            return getEntityManagerFactory(configuration, props);
+        } catch (Throwable ex) {
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
     }
 }

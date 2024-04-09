@@ -1,4 +1,4 @@
-package Week4.GLSPart2;
+package Week4.GLSPART2;
 
 import jakarta.persistence.*;
 import lombok.*;

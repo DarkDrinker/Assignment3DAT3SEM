@@ -2,36 +2,54 @@ package Week6.HotelAssignment.config;
 
 import Week6.HotelAssignment.Controller.HotelController;
 import Week6.HotelAssignment.Controller.RoomController;
+import Week6.HotelAssignment.Controller.SecurityController;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.apibuilder.EndpointGroup;
-import static io.javalin.apibuilder.ApiBuilder.*;
-import static io.javalin.apibuilder.ApiBuilder.path;
+import io.javalin.security.RouteRole;
 
-import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class Routes {
-
-    public static EndpointGroup setRoutes() {
+    private static SecurityController sc;
+    private static RoomController rm;
+    private static HotelController hm;
+    private static final ObjectMapper objectMapper = new ObjectMapper().configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false).registerModule(new JavaTimeModule());
+    public static EndpointGroup getRoutes(Boolean isTesting){
+        rm = RoomController.getInstance(isTesting);
+        hm = HotelController.getInstance(isTesting);
+        sc = SecurityController.getInstance(isTesting);
         return () -> {
-            path("/hotels", getRoutes());
+            before(sc.authenticate());
+            path("", () -> {
+                get("/", ctx -> ctx.json(objectMapper.createObjectNode().put("Message", "Connected Successfully")), Role.ANYONE);
+            });
+            path("/rooms", () -> {
+                get("/", rm.getRooms(), Role.MANAGER);
+                get("/room/{id}", rm.getRoomById(), Role.MANAGER);
+                post("/room", rm.createRoom(), Role.ADMIN);
+                put("/room/{id}", rm.updateRoom(), Role.ADMIN);
+                delete("/room/{id}", rm.deleteRoom(), Role.ADMIN);
+            });
+            path("/hotels", () -> {
+                get("/", hm.getHotels(), Role.MANAGER, Role.ADMIN);
+                get("/{id}", hm.getHotelById(), Role.ADMIN);
+                get("/{id}/rooms", hm.getHotelRoomsByHotelId(), Role.ADMIN);
+                post("/", hm.createHotel(), Role.ADMIN);
+                put("/{id}", hm.updateHotel(), Role.ADMIN);
+                delete("/{id}", hm.deleteHotel(), Role.ADMIN);
+            });
+            path("/auth", () -> {
+                post("/login", sc.login(), Role.ANYONE);
+                post("/register", sc.register(), Role.ANYONE);
+            });
         };
     }
 
-    private static EndpointGroup getRoutes() {
-        return () -> {
-            path("/rooms", () -> {
-                get("/", RoomController.getRooms());
-                get("/room/{id}", RoomController::getRoomById);
-                post("/room", RoomController::createRoom);
-                put("/room/{id}", RoomController::updateRoom);
-                delete("/room/{id}", RoomController::deleteRoom);
-            });
-            get("/", HotelController.getHotels());
-            get("/hotel/{id}", HotelController::getHotelById);
-            get("/hotel/{id}/rooms", HotelController::getHotelRoomsByHotelId);
-            post("/hotel", HotelController::createHotel);
-            put("/hotel/{id}", HotelController::updateHotel);
-            delete("/hotel/{id}", HotelController::deleteHotel);
-
-        };
+    enum Role implements RouteRole {
+        ADMIN,
+        MANAGER,
+        ANYONE
     }
 }

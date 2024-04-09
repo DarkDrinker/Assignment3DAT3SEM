@@ -5,18 +5,15 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public abstract class DAO<T, S> implements IDAO<T, S>{
     Class<T> entityClass;
-    public static EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig();
-    protected Map<Integer,T> entityMap;
+    public static EntityManagerFactory emf;
 
-    public DAO(EntityManagerFactory emf) {
-        this.emf = emf;
-        entityMap = new HashMap<>();
+    public DAO(Class<T> tClass, boolean isTesting){
+        emf = HibernateConfig.getEntityManagerFactoryConfig(isTesting);
+        entityClass = tClass;
     }
 
     public T create(T t) {

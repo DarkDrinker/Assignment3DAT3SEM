@@ -1,16 +1,15 @@
 package Week6.HotelAssignment.DAO;
 
 import Week6.HotelAssignment.model.Hotel;
-import jakarta.persistence.EntityManagerFactory;
 
 public class HotelDAO extends DAO<Hotel, Integer>{
     private static HotelDAO instance;
-    public HotelDAO(EntityManagerFactory emf) {
-        super(emf);
+    public HotelDAO(Boolean isTesting) {
+        super(Hotel.class, isTesting);
     }
-    public static HotelDAO getInstance(boolean isTest){
+    public static HotelDAO getInstance(boolean isTesting){
         if(instance == null){
-            instance = new HotelDAO(emf);
+            instance = new HotelDAO(isTesting);
         }
         return instance;
     }

@@ -1,9 +1,13 @@
-package Week3.Excersise4;
+package Week3.exercise4;
 
+import Week3.Excersise4.HibernateConfig;
+import Week3.Excersise4.Point;
+import Week3.Excersise4.PointDAO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

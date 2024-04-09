@@ -14,3 +14,35 @@ POST http://localhost:7007/api/hotels/hotel
         }
     ]
 }
+
+###
+POST http://localhost:7008/api/auth/login
+
+{
+    "username": "anders",
+    "password": "thisisapassword"
+}
+
+###
+POST http://localhost:7008/api/hotels/
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHcm91cCBvbmUiLCJzdWIiOiJhbmRlcnMiLCJleHAiOjE3MTI2OTQ0NzEsInJvbGVzIjoiQURNSU4iLCJ1c2VybmFtZSI6ImFuZGVycyJ9.slGkx_7kUT0d-Rs5NpBeg8RpvQZ0Gr1kVtEyc2U86oI
+
+{
+"name":"Star Hotel",
+"address":"Starvej 7",
+"rooms":[
+    {
+        "number":1,
+        "price":5000
+    },
+    {
+        "number":2,
+        "price":3000
+    }
+]
+}
+###
+GET http://localhost:7008/api/hotels
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHcm91cCBvbmUiLCJzdWIiOiJhbmRlcnMiLCJleHAiOjE3MTI2OTQ0NzEsInJvbGVzIjoiQURNSU4iLCJ1c2VybmFtZSI6ImFuZGVycyJ9.slGkx_7kUT0d-Rs5NpBeg8RpvQZ0Gr1kVtEyc2U86oI
+
+###

@@ -1,4 +1,4 @@
-package Week4.GLSPart2;
+package Week4.GLSPART2;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,5 +19,5 @@ public class Location {
     int Id;
     double Longtitude;
     double Latitude;
-    String Adress;
+    String Address;
 }

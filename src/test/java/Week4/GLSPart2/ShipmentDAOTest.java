@@ -1,6 +1,7 @@
 package Week4.GLSPart2;
 
 import Week3.Excersise7GLS.PackageDAO;
+import Week4.GLSPART2.ShipmentDAO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ShipmentDAOTest {
     private static EntityManager entityManager;
-    private static Week4.GLSPart2.ShipmentDAO shipmentDAO;
+    private static ShipmentDAO shipmentDAO;
 
     @BeforeAll
     public static void setUp() {
